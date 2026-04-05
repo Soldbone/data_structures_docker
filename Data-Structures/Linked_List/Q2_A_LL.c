@@ -101,20 +101,47 @@ int main()
 
 void alternateMergeLinkedList(LinkedList *ll1, LinkedList *ll2)
 {
-	/* add your code here */
-	ListNode *node;
-	int n1 = ll1->size;
-	int n2 = ll2->size;
-	int i = 0;
-	int j = 1;
-	while ((i < n1) && (i <= n2 - 1))
+	/* 최적화 방식 */
+	if (ll1 == NULL || ll2 == NULL || ll1->head == NULL || ll2->head == NULL)
 	{
-		node = findNode(ll2, 0);
-		insertNode(ll1, j, node->item);
-		removeNode(ll2, 0);
-		i++;
-		j += 2;
+		return;
 	}
+
+	ListNode *curr1 = ll1->head;
+	ListNode *curr2 = ll2->head;
+	ListNode *next1, *next2;
+
+	while (curr1 != NULL && curr2 != NULL)
+	{
+		next1 = curr1->next;
+		next2 = curr2->next;
+
+		curr2->next = next1;
+		curr1->next = curr2;
+
+		ll1->size++;
+		ll2->size--;
+
+		curr1 = next1;
+		curr2 = next2;
+	}
+
+	ll2->head = curr2;
+
+	/* 기존 구현 방식 */
+	// ListNode *node;
+	// int n1 = ll1->size;
+	// int n2 = ll2->size;
+	// int i = 0;
+	// int j = 1;
+	// while ((i < n1) && (i <= n2 - 1))
+	// {
+	// 	node = findNode(ll2, 0);
+	// 	insertNode(ll1, j, node->item);
+	// 	removeNode(ll2, 0);
+	// 	i++;
+	// 	j += 2;
+	// }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
