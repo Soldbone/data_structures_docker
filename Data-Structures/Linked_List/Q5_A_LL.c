@@ -110,23 +110,47 @@ void frontBackSplitLinkedList(LinkedList *ll, LinkedList *resultFrontList, Linke
 		int insertNode(LinkedList *ll, int index, int value);
 		int removeNode(LinkedList *ll, int index);
 	*/
+
+	/* 포인터 직접 조작 버전 */
 	if (ll == NULL || ll->head == NULL)
 		return;
 
 	int front_size = (ll->size + 1) / 2;
-	int i = 0;
+	resultFrontList->head = ll->head;
+	resultFrontList->size = front_size;
 
 	ListNode *curr = ll->head;
-	for (; i < front_size; i++)
+	for (int i = 0; i < front_size - 1; i++)
 	{
-		insertNode(resultFrontList, i, curr->item);
 		curr = curr->next;
 	}
-	for (int j = 0; i < ll->size; i++, j++)
-	{
-		insertNode(resultBackList, j, curr->item);
-		curr = curr->next;
-	}
+
+	resultBackList->head = curr->next;
+	resultBackList->size = ll->size - front_size;
+
+	curr->next = NULL;
+
+	ll->head = NULL;
+	ll->size = 0;
+
+	/* ADT 함수 사용 버전 */
+	// if (ll == NULL || ll->head == NULL)
+	// 	return;
+
+	// int front_size = (ll->size + 1) / 2;
+	// int i = 0;
+
+	// ListNode *curr = ll->head;
+	// for (; i < front_size; i++)
+	// {
+	// 	insertNode(resultFrontList, i, curr->item);
+	// 	curr = curr->next;
+	// }
+	// for (int j = 0; i < ll->size; i++, j++)
+	// {
+	// 	insertNode(resultBackList, j, curr->item);
+	// 	curr = curr->next;
+	// }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
