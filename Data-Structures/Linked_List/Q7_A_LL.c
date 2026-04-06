@@ -84,6 +84,7 @@ int main()
 
 void RecursiveReverse(ListNode **ptrHead)
 {
+	/* 정석 풀이 */
 	if (*ptrHead == NULL || (*ptrHead)->next == NULL)
 		return;
 
@@ -96,6 +97,19 @@ void RecursiveReverse(ListNode **ptrHead)
 	curr->next = NULL;
 
 	*ptrHead = nxt;
+
+	/* 내가 고집 부린 버전 */
+    // if (*ptrHead == NULL || (*ptrHead)->next == NULL)
+    //     return;
+
+    // ListNode *curr = *ptrHead;
+    // ListNode *nxt = curr->next;
+
+    // *ptrHead = nxt;
+    // RecursiveReverse(ptrHead);
+
+    // nxt->next = curr;
+    // curr->next = NULL;
 }
 
 //////////////////////////////////////////////////////////////////////////////////
