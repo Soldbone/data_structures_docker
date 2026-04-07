@@ -160,7 +160,7 @@ void removeEvenValues(Stack *s)
 	}
 
 	/* Using 재귀 */
-	// if (isEmptyStack(s))
+	// if (isEmptyStack(s)
 	// {
 	// 	return;
 	// }
