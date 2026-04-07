@@ -170,7 +170,7 @@ void removeEvenValues(Stack *s)
 	// removeEvenValues(s);
 	// if (item % 2 != 0) {
 	// 	push(s, item);
-	}
+	// }
 }
 
 //////////////////////////////////////////////////////////////////////////////////
